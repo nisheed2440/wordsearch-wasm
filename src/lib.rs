@@ -1,7 +1,12 @@
+mod location;
+mod orientations;
+mod position;
+mod puzzle;
+mod settings;
 mod utils;
 
+use js_sys::Math::{floor, random};
 use wasm_bindgen::prelude::*;
-use js_sys::Math::{random, floor};
 
 // When the `wee_alloc` feature is enabled, use `wee_alloc` as the global
 // allocator.
