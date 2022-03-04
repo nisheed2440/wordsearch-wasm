@@ -27,7 +27,12 @@ impl Default for Settings {
         Settings {
             width: 10,
             height: 10,
-            orientations: vec![Orientation::Horizontal, Orientation::Vertical],
+            orientations: vec![
+                Orientation::Horizontal,
+                Orientation::Vertical,
+                Orientation::Diagonal,
+                Orientation::DiagonalUp,
+            ],
             max_attempts: 10,
             max_grid_growth: 10,
             prefer_overlap: false,
@@ -63,7 +68,11 @@ mod tests {
         assert_eq!(settings.width, 20);
         assert_eq!(settings.height, 20);
 
-        let settings_2 = Settings { width: 20, height: 20, ..Default::default() };
+        let settings_2 = Settings {
+            width: 20,
+            height: 20,
+            ..Default::default()
+        };
         assert_eq!(settings_2.width, 20);
         assert_eq!(settings_2.height, 20);
     }

@@ -39,3 +39,46 @@ impl Puzzle {
         self.errors.push(String::from(error));
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn test_new_puzzle() {
+        let puzzle = Puzzle::new(5, 5);
+        assert_eq!(puzzle.puzzle.len(), 5);
+        assert_eq!(puzzle.puzzle[0].len(), 5);
+        assert_eq!(puzzle.puzzle[1].len(), 5);
+        assert_eq!(puzzle.puzzle[2].len(), 5);
+        assert_eq!(puzzle.puzzle[3].len(), 5);
+        assert_eq!(puzzle.puzzle[4].len(), 5);
+    }
+
+    #[test]
+    fn test_place_char() {
+        let mut puzzle = Puzzle::new(5, 5);
+        puzzle.place_char('a', 1, 1);
+        assert_eq!(puzzle.puzzle[1][1], 'a');
+    }
+
+    #[test]
+    fn test_add_words_not_placed() {
+        let mut puzzle = Puzzle::new(5, 5);
+        puzzle.add_words_not_placed("test");
+        assert_eq!(puzzle.words_not_placed[0], "test");
+    }
+
+    #[test]
+    fn test_add_warning() {
+        let mut puzzle = Puzzle::new(5, 5);
+        puzzle.add_warning("test");
+        assert_eq!(puzzle.warnings[0], "test");
+    }
+
+    #[test]
+    fn test_add_errors() {
+        let mut puzzle = Puzzle::new(5, 5);
+        puzzle.add_errors("test");
+        assert_eq!(puzzle.errors[0], "test");
+    }
+}
