@@ -14,28 +14,28 @@ pub struct Puzzle {
 }
 
 impl Puzzle {
-    pub fn new() -> Puzzle {
+    pub fn new(w: i32, h: i32) -> Puzzle {
         Puzzle {
-            puzzle: vec![],
+            puzzle: vec![vec![' '; w as usize]; h as usize],
             words_not_placed: vec![],
             warnings: vec![],
             errors: vec![],
         }
     }
 
-    pub fn set_puzzle(&mut self, puzzle: Vec<Vec<char>>) {
-        self.puzzle = puzzle;
+    pub fn place_char(&mut self, character: char, x: i32, y: i32) {
+        self.puzzle[x as usize][y as usize] = character;
     }
 
-    pub fn set_words_not_placed(&mut self, words_not_placed: Vec<String>) {
-        self.words_not_placed = words_not_placed;
+    pub fn add_words_not_placed(&mut self, word: &str) {
+        self.words_not_placed.push(String::from(word));
     }
 
-    pub fn set_warnings(&mut self, warnings: Vec<String>) {
-        self.warnings = warnings;
+    pub fn add_warning(&mut self, warning: &str) {
+        self.warnings.push(String::from(warning));
     }
 
-    pub fn set_errors(&mut self, errors: Vec<String>) {
-        self.errors = errors;
+    pub fn add_errors(&mut self, error: &str) {
+        self.errors.push(String::from(error));
     }
 }
